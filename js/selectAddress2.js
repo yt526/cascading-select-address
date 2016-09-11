@@ -28,19 +28,22 @@
           element: null,
           backdrop: null,
           show: function() {
-            return this.element.addClass('active');
+            this.element.show();
           },
           hide: function() {
-            this.element.removeClass('active');
-            return false;
+            this.element.hide();
           },
           resize: function() {
             if (!this.element) {
               return;
             }
+            var top = element.offset().top + element.height() + 20;
+            if(top+ this.element.height() > $(window).height()){
+              top -= this.element.height();
+            }
             this.element.css({
-              top: -this.element.height() - 30,
-              'margin-left': -this.element.width() / 2
+              top: top,
+              left: element.offset().left
             });
             return false;
           },
@@ -50,9 +53,14 @@
           },
           init: function() {
             element.on('click keydown', function() {
+              popup.resize();
               popup.show();
               event.stopPropagation();
               return false;
+            });
+            element.on('blur', function() {
+              console.log(element);
+              event.stopPropagation();
             });
             $(window).on('click', (function(_this) {
               return function() {
@@ -64,7 +72,7 @@
             });
             return setTimeout((function(_this) {
               return function() {
-                _this.element.show();
+                //_this.element.show();
                 return _this.resize();
               };
             })(this), 500);
