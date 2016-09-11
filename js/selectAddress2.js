@@ -16,9 +16,10 @@
       restrict: 'A',
       scope: {
         p: '=',
-        a: '=',
         c: '=',
+        a: '=',
         d: '=',
+        deep: '=',
         ngModel: '='
       },
       link: function(scope, element, attrs) {
@@ -105,37 +106,42 @@
           scope.submit = function() {
             return popup.hide();
           };
-          scope.$watch('p', function(newV) {
-            var v, _i, _len, _results;
-            if (newV) {
-              _results = [];
-              for (_i = 0, _len = data.length; _i < _len; _i++) {
-                v = data[_i];
-                if (v.p === newV) {
-                  _results.push(scope.cities = v.c);
+          if(scope.deep>=2) {
+            scope.$watch('p', function (newV) {
+              var v, _i, _len, _results;
+              if (newV) {
+                _results = [];
+                for (_i = 0, _len = data.length; _i < _len; _i++) {
+                  v = data[_i];
+                  if (v.p === newV) {
+                    _results.push(scope.cities = v.c);
+                  }
                 }
+                return _results;
+              } else {
+                return scope.cities = [];
               }
-              return _results;
-            } else {
-              return scope.cities = [];
-            }
-          });
-          scope.$watch('c', function(newV) {
-            var v, _i, _len, _ref, _results;
-            if (newV) {
-              _ref = scope.cities;
-              _results = [];
-              for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-                v = _ref[_i];
-                if (v.n === newV) {
-                  _results.push(scope.dists = v.a);
+            });
+          }
+          console.log(scope);
+          if(scope.deep>=3){
+            scope.$watch('c', function(newV) {
+              var v, _i, _len, _ref, _results;
+              if (newV) {
+                _ref = scope.cities;
+                _results = [];
+                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                  v = _ref[_i];
+                  if (v.n === newV) {
+                    _results.push(scope.dists = v.a);
+                  }
                 }
+                return _results;
+              } else {
+                return scope.dists = [];
               }
-              return _results;
-            } else {
-              return scope.dists = [];
-            }
-          });
+            });
+          }
           return scope.$watch(function() {
             scope.ngModel = '';
             if (scope.p) {

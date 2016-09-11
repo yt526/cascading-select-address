@@ -54,7 +54,7 @@
     <div class="select-address-container">
         <ul>
 
-            <li>
+            <li ng-if="deep>=1">
                 <!-- 省份 -->
                 <span ng-repeat="item in provinces"
                       ng-click="aSet.p(item.p)"
@@ -63,7 +63,7 @@
                 </span>
             </li>
 
-            <li ng-if="cities">
+            <li ng-if="p && deep>=2">
                 <!-- 城市 -->
                 <span ng-repeat="item in cities"
                       ng-click="aSet.c(item.n)"
@@ -72,7 +72,7 @@
                 </span>
             </li>
 
-            <li ng-if="c">
+            <li ng-if="c && deep>=3">
                 <!-- 县级 -->
                 <span ng-repeat="item in dists"
                       ng-click="aSet.a(item.s)"
@@ -91,6 +91,6 @@
         </span>
 
         <strong class="text-danger">{{ p }} {{ c }} {{ a }}　</strong>
-        <input ng-show="p" ng-model="d" class="form-control input-sm" type="text" placeholder="具体街道" />
+        <input ng-show="deep>=4" ng-model="d" class="form-control input-sm" type="text" placeholder="具体街道" />
     </div>
 </div>

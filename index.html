@@ -7,16 +7,46 @@
 </head>
 <body ng-controller="appCtrl">
     <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-8 col-sm-offset-2">
             <div class="page-header">
                 <h1 class="text-center">Angularjs 地址联动2.1.1</h1>
             </div>
 
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">例子<span class="text-muted">（目前仅支持单例）</span></label>
+                    <label class="col-sm-4 control-label">例子1<span class="text-muted">（省）</span></label>
                     <div class="col-sm-6">
-                        <input select-address p="p" c="c" a="a" d="d" ng-model="xxx" placeholder="请选择所在地" type="text" class="form-control" />
+                        <input select-address p="p1" deep="1" ng-model="address1" placeholder="请选择所在地" type="text" class="form-control" />
+                    </div>
+                </div>
+            </form>
+
+
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">例子2<span class="text-muted">（省+市）</span></label>
+                    <div class="col-sm-6">
+                        <input select-address p="p2" c="c2" deep="2" ng-model="address2" placeholder="请选择所在地" type="text" class="form-control" />
+                    </div>
+                </div>
+            </form>
+
+
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">例子3<span class="text-muted">（省+市+区县）</span></label>
+                    <div class="col-sm-6">
+                        <input select-address p="p3" c="c3" a="a3" deep="3" ng-model="address3" placeholder="请选择所在地" type="text" class="form-control" />
+                    </div>
+                </div>
+            </form>
+
+
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">例子4<span class="text-muted">（省+市+区县+街道）</span></label>
+                    <div class="col-sm-6">
+                        <input select-address p="p4" c="c4" a="a4" d="d4" deep="4" ng-model="address4" placeholder="请选择所在地" type="text" class="form-control" />
                     </div>
                 </div>
             </form>

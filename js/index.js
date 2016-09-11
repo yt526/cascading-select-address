@@ -5,10 +5,11 @@
   app = angular.module('app', ['selectAddress']);
 
   app.controller('appCtrl', function($scope) {
-    $scope.p = '广东';
-    $scope.c = '梅州';
-    $scope.a = '平远县';
-    return $scope.d = '大柘镇';
+    //$scope.address = "广东";
+    //$scope.p = '广东';
+    //$scope.c = '梅州';
+    //$scope.a = '平远县';
+    //$scope.d = '大柘镇';
   });
 
   angular.bootstrap(document, ['app']);
