@@ -82,18 +82,30 @@
           scope.aSet = {
             p: function(p) {
               scope.p = p;
-              scope.c = null;
-              scope.a = null;
-              return scope.d = null;
+              if(scope.deep>=2) {
+                scope.c = null;
+              }
+              if(scope.deep>=3) {
+                scope.a = null;
+              }
+              if(scope.deep>=4){
+                return scope.d = null;
+              }
             },
             c: function(c) {
               scope.c = c;
-              scope.a = null;
-              return scope.d = null;
+              if(scope.deep>=3) {
+                scope.a = null;
+              }
+              if(scope.deep>=4){
+                return scope.d = null;
+              }
             },
             a: function(a) {
               scope.a = a;
-              scope.d = null;
+              if(scope.deep>=4){
+                return scope.d = null;
+              }
               return popup.focus();
             }
           };
@@ -123,7 +135,6 @@
               }
             });
           }
-          console.log(scope);
           if(scope.deep>=3){
             scope.$watch('c', function(newV) {
               var v, _i, _len, _ref, _results;
